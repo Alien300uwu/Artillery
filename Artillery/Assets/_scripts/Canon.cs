@@ -32,6 +32,16 @@ public class Canon : MonoBehaviour
             Vector3 direccionDisparo = transform.rotation.eulerAngles;
             direccionDisparo.y = 90 - direccionDisparo.x;
             tempRB.velocity = direccionDisparo.normalized * AdministradorJuego.VelocidadBala;
+
+            AdministradorJuego.DisparosPorJuego = AdministradorJuego.DisparosPorJuego - 1;
+            Debug.Log($"La cantidad de balas que quedan son = {AdministradorJuego.DisparosPorJuego}");
         }
+        if(AdministradorJuego.DisparosPorJuego < 1)
+        {
+            GameObject.Destroy(puntaCanon);
+        }
+        
+        
+
     }
 }
