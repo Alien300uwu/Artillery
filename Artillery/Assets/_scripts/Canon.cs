@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Canon : MonoBehaviour
 {
-    public static bool Bloqueado; 
+    public static bool Bloqueado;
+
+    public AudioClip clipDisparo;
+    private GameObject SonidoDisparo;
+    private AudioSource SourceDisparo;
 
     [SerializeField] private GameObject BalaPrefab;
+    public GameObject PartiulasDisparo;
     private GameObject puntaCanon;
     private float rotacion;
 
@@ -39,6 +44,8 @@ public class Canon : MonoBehaviour
 private void Start()
     {
         puntaCanon = transform.Find("PuntaCanon").gameObject;
+        SonidoDisparo = GameObject.Find("SonidoDisparo");
+        SourceDisparo = SonidoDisparo.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -60,7 +67,10 @@ private void Start()
             SeguirCamara.objetivo = temp;
             Vector3 direccionDisparo = transform.rotation.eulerAngles;
             direccionDisparo.y = 90 - direccionDisparo.x;
+            Vector3 direccionParticulas = new Vector3(-90 + direccionDisparo.x, 90, 0); 
+            GameObject PartiulasDisparos = Instantiate(PartiulasDisparo, puntaCanon.transform.position, Quaternion.Euler(direccionParticulas), transform);
             tempRB.velocity = direccionDisparo.normalized * _velocidadBalas;
+            SourceDisparo.Play();
             Bloqueado = true;
 
 
