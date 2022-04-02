@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material
+  m_Name: Material_Bala_Tarea
   m_Shader: {fileID: -6465566751694194690, guid: 8d1f4cb72e3e592418776711a118ed0a, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
