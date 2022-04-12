@@ -24,12 +24,15 @@ public class Canon : MonoBehaviour
     private InputAction modificarFuerza;
     private InputAction disparar;
 
+
+
     private void Awake()
     {
         canonControls = new CanonControles();
     }
     private void OnEnable()
     {
+
         apuntar = canonControls.Canon.Apuntar;
         modificarFuerza = canonControls.Canon.ModificarFuerza;
         disparar = canonControls.Canon.Disparar;
@@ -37,11 +40,16 @@ public class Canon : MonoBehaviour
         modificarFuerza.Enable();
         disparar.Enable();
         disparar.performed += Disparar;
+
+
     }
 
+    
+
+    
     //Opcional
-    public static int cantidadDeBalas = AdministradorJuego.DisparosPorJuego;
-    public static int _CantidadDeBalas
+    public  int cantidadDeBalas = AdministradorJuego.DisparosPorJuego;
+    public  int _CantidadDeBalas
     {
         get { return cantidadDeBalas; }
         set 
@@ -49,6 +57,8 @@ public class Canon : MonoBehaviour
             cantidadDeBalas = value;
         }
     }
+
+    
 
     //Opcional
     public int VelocidadBalas = AdministradorJuego.VelocidadBala;
@@ -114,7 +124,7 @@ private void Start()
 
 
          //Esto detiene el canon
-        if (_CantidadDeBalas < 0)
+        if (_CantidadDeBalas <= 0)
         {
             GameObject.Destroy(puntaCanon);
         }

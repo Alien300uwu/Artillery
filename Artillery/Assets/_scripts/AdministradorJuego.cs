@@ -11,6 +11,8 @@ public class AdministradorJuego : MonoBehaviour
     public static int DisparosPorJuego = 10;
     public static float VelocidadRotacion = 1;
 
+    Canon Bolas;
+
     public GameObject CanvasGanar;
     public GameObject CanvasPerder;
       
@@ -26,10 +28,20 @@ public class AdministradorJuego : MonoBehaviour
         }
     }
 
-
-    private void Update()
+    private void Start()
     {
-        if(Canon._CantidadDeBalas == -1)
+
+       
+        
+
+    }
+    public void Update()
+    {
+        Bolas = FindObjectOfType<Canon>();
+        Debug.Log(Bolas.cantidadDeBalas);
+
+ 
+        if(Bolas.cantidadDeBalas <= 0)
         {
             PerderJuego();
         }
