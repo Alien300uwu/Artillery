@@ -25,6 +25,11 @@ public class Canon : MonoBehaviour
     private InputAction modificarFuerza;
     private InputAction disparar;
 
+    public PS4Control Ps4Controller;
+    private InputAction apuntarPS;
+    private InputAction modificarFuerzaPS;
+    private InputAction dispararPS;
+
     [SerializeField] private Slider _VeloCambio;
    
 
@@ -34,7 +39,7 @@ public class Canon : MonoBehaviour
     }
     private void OnEnable()
     {
-
+        
         apuntar = canonControls.Canon.Apuntar;
         modificarFuerza = canonControls.Canon.ModificarFuerza;
         disparar = canonControls.Canon.Disparar;
@@ -42,6 +47,15 @@ public class Canon : MonoBehaviour
         modificarFuerza.Enable();
         disparar.Enable();
         disparar.performed += Disparar;
+
+
+        apuntarPS = Ps4Controller.Ps4Control.Apuntado;
+        modificarFuerzaPS = Ps4Controller.Ps4Control.Fuerza;
+        dispararPS = Ps4Controller.Ps4Control.Disparo;
+        apuntarPS.Enable();
+        modificarFuerzaPS.Enable();
+        dispararPS.Enable();
+        dispararPS.performed += Disparar;
 
 
     }
