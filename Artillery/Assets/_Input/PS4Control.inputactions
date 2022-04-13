@@ -1,0 +1,127 @@
+{
+    "name": "PS4Control",
+    "maps": [
+        {
+            "name": "Ps4Control",
+            "id": "a20a77b3-06b2-42cd-97aa-a6b7b6a2d5db",
+            "actions": [
+                {
+                    "name": "Apuntado",
+                    "type": "Button",
+                    "id": "0cbe0cd6-510a-45a5-a4d9-5e42cdd2ee57",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Disparo",
+                    "type": "Button",
+                    "id": "8ae40007-af09-4849-87e5-d8d2eca74a85",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Fuerza",
+                    "type": "Button",
+                    "id": "63de6c00-e2d3-451f-9078-48af407a7afa",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "1D Axis",
+                    "id": "d0098f6b-d2c4-48da-a26d-af8d62c5ca6d",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Apuntado",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "0a72c379-51ad-4910-a5c7-ec52e3f45e96",
+                    "path": "<DualShockGamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PS4Controller",
+                    "action": "Apuntado",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "d4775ed6-846e-48f0-9084-fe22ade43103",
+                    "path": "<DualShockGamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PS4Controller",
+                    "action": "Apuntado",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "68aa64a1-d72b-4dd8-9b71-0481eac81824",
+                    "path": "<DualShockGamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PS4Controller",
+                    "action": "Disparo",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "5f8e3122-5138-4fed-9f8e-18c6f1f93bb0",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fuerza",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "28d79b56-7c0c-4280-9bf7-9d99dea00c28",
+                    "path": "<DualShockGamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PS4Controller",
+                    "action": "Fuerza",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "9b7a4fff-92f6-451a-ae60-69439c767acd",
+                    "path": "<DualShockGamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PS4Controller",
+                    "action": "Fuerza",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "PS4Controller",
+            "bindingGroup": "PS4Controller",
+            "devices": [
+                {
+                    "devicePath": "<DualShockGamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
