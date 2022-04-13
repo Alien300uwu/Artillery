@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Canon : MonoBehaviour
 {
 
-    
+
 
     public static bool Bloqueado;
 
@@ -24,7 +25,8 @@ public class Canon : MonoBehaviour
     private InputAction modificarFuerza;
     private InputAction disparar;
 
-
+    [SerializeField] private Slider _VeloCambio;
+   
 
     private void Awake()
     {
@@ -44,41 +46,27 @@ public class Canon : MonoBehaviour
 
     }
 
-    
 
-    
+
+
     //Opcional
-    public  int cantidadDeBalas = AdministradorJuego.DisparosPorJuego;
-    public  int _CantidadDeBalas
-    {
-        get { return cantidadDeBalas; }
-        set 
-        {
-            cantidadDeBalas = value;
-        }
-    }
+    public int cantidadDeBalas = AdministradorJuego.DisparosPorJuego;
 
-    
+
+
 
     //Opcional
     public int VelocidadBalas = AdministradorJuego.VelocidadBala;
-    private int _velocidadBalas
-    {
-        get { return VelocidadBalas; }
-        set 
-        {
-            VelocidadBalas = value;
-        }
-    }
-    
 
 
 
-private void Start()
+
+    private void Start()
     {
         puntaCanon = transform.Find("PuntaCanon").gameObject;
         SonidoDisparo = GameObject.Find("SonidoDisparo");
         SourceDisparo = SonidoDisparo.GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -94,9 +82,7 @@ private void Start()
         if (rotacion < 0) rotacion = 0;
 
 
-
-
-
+        
 
 
     }
@@ -110,27 +96,30 @@ private void Start()
         direccionDisparo.y = 90 - direccionDisparo.x;
         Vector3 direccionParticulas = new Vector3(-90 + direccionDisparo.x, 90, 0);
         GameObject PartiulasDisparos = Instantiate(PartiulasDisparo, puntaCanon.transform.position, Quaternion.Euler(direccionParticulas), transform);
-        tempRB.velocity = direccionDisparo.normalized * _velocidadBalas;
-        AdministradorJuego.DisparosPorJuego--;
+        tempRB.velocity = direccionDisparo.normalized * VelocidadBalas;
         SourceDisparo.Play();
         Bloqueado = true;
 
 
         //Esto reduce la cantidad de balas
-        _CantidadDeBalas = _CantidadDeBalas - 1;
-        Debug.Log($"La cantidad de balas que quedan son = {_CantidadDeBalas}");
-        
+        cantidadDeBalas = cantidadDeBalas - 1;
+        Debug.Log($"La cantidad de balas que quedan son = {cantidadDeBalas}");
 
 
 
-         //Esto detiene el canon
-        if (_CantidadDeBalas <= 0)
+
+        //Esto detiene el canon
+        if (cantidadDeBalas <= 0)
         {
             GameObject.Destroy(puntaCanon);
         }
 
 
-        Debug.Log(_CantidadDeBalas);
-        Debug.Log(_velocidadBalas);
+        Debug.Log(cantidadDeBalas);
+        Debug.Log(VelocidadBalas);
     }
+
+
+   
+
 }

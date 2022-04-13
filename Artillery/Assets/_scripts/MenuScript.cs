@@ -26,9 +26,30 @@ public class MenuScript : MonoBehaviour
         MenuOpciones.SetActive(false);
         canvasMenu.SetActive(true);
     }
-
-
-
+    public void ContinuarJuego()
+    {
+        canvasMenu.SetActive(false);
+    }
+    public void VolverAlMenuInicial()
+    {
+        SceneManager.LoadScene(0);
+    }
+    public void SiguienteNivel()
+    {
+        var siguienteNivel = SceneManager.GetActiveScene().buildIndex + 1;
+        if (SceneManager.sceneCountInBuildSettings > siguienteNivel)
+        {
+            SceneManager.LoadScene(siguienteNivel);
+        }
+        else
+        {
+            VolverAlMenuInicial();
+        }
+    }
+    public void ReintentarNivel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
 
 

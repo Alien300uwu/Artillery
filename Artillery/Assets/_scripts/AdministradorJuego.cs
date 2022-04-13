@@ -55,4 +55,9 @@ public class AdministradorJuego : MonoBehaviour
     {
         CanvasGanar.SetActive(true);
     }
+
+
+    
+
+
 }
