@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MenuScript : MonoBehaviour
 {
+
+    Canon Controles;
+
+
     public GameObject canvasMenu;
     public GameObject MenuOpciones;
 
@@ -50,8 +54,4 @@ public class MenuScript : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
-
-
-
 }

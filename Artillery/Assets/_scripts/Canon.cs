@@ -25,10 +25,10 @@ public class Canon : MonoBehaviour
     private InputAction modificarFuerza;
     private InputAction disparar;
 
-    public PS4Control Ps4Controller;
-    private InputAction apuntarPS;
-    private InputAction modificarFuerzaPS;
-    private InputAction dispararPS;
+    //public PS4Control Ps4Controller;
+    //private InputAction apuntarPS;
+    //private InputAction modificarFuerzaPS;
+    //private InputAction dispararPS;
 
     [SerializeField] private Slider _VeloCambio;
    
@@ -49,18 +49,19 @@ public class Canon : MonoBehaviour
         disparar.performed += Disparar;
 
 
-        apuntarPS = Ps4Controller.Ps4Control.Apuntado;
-        modificarFuerzaPS = Ps4Controller.Ps4Control.Fuerza;
-        dispararPS = Ps4Controller.Ps4Control.Disparo;
-        apuntarPS.Enable();
-        modificarFuerzaPS.Enable();
-        dispararPS.Enable();
-        dispararPS.performed += Disparar;
+        //apuntarPS = Ps4Controller.Ps4Control.Apuntado;
+        //modificarFuerzaPS = Ps4Controller.Ps4Control.Fuerza;
+        //dispararPS = Ps4Controller.Ps4Control.Disparo;
+        //apuntarPS.Enable();
+        //modificarFuerzaPS.Enable();
+        //dispararPS.Enable();
+        //dispararPS.performed += Disparar;
+
+
+
 
 
     }
-
-
 
 
     //Opcional
@@ -70,7 +71,7 @@ public class Canon : MonoBehaviour
 
 
     //Opcional
-    public int VelocidadBalas = AdministradorJuego.VelocidadBala;
+    public float VelocidadBalas = AdministradorJuego.VelocidadBala;
 
 
 
@@ -84,6 +85,9 @@ public class Canon : MonoBehaviour
     }
 
     // Update is called once per frame
+
+    
+
     void Update()
     {
         rotacion += apuntar.ReadValue<float>() * AdministradorJuego.VelocidadRotacion;
@@ -95,10 +99,24 @@ public class Canon : MonoBehaviour
         if (rotacion > 90) rotacion = 90;
         if (rotacion < 0) rotacion = 0;
 
-
         
-
-
+        
+        
+        
+        
+        
+        //limite de velocidad
+        if(VelocidadBalas >= 101)
+        {
+            VelocidadBalas = 100;
+        }
+        if (VelocidadBalas <= -1)
+        {
+            VelocidadBalas = 0;
+        }
+        // Cambio de la Velocidad
+        modificarFuerza.ReadValue<float>();
+        VelocidadBalas = _VeloCambio.value * 10;
     }
 
     private void Disparar(InputAction.CallbackContext context)
@@ -132,8 +150,5 @@ public class Canon : MonoBehaviour
         Debug.Log(cantidadDeBalas);
         Debug.Log(VelocidadBalas);
     }
-
-
-   
 
 }
